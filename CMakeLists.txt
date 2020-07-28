@@ -633,11 +633,14 @@ if(BUILD_TESTS)
     DESTINATION sbin/tests/openr/config-store
   )
 
-  add_openr_test(DecisionTest decision_test
-    SOURCES
-      openr/decision/tests/DecisionTest.cpp
-    DESTINATION sbin/tests/openr/decision
-  )
+  # TODO: Debug why this makes GitHub Actions hang
+  if(ADD_ROOT_TESTS)
+    add_openr_test(DecisionTest decision_test
+      SOURCES
+        openr/decision/tests/DecisionTest.cpp
+      DESTINATION sbin/tests/openr/decision
+    )
+  endif()
 
   add_openr_test(DualTest dual_test
     SOURCES
